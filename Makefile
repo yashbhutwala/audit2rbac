@@ -5,17 +5,6 @@ default: fmt vet lint build quicktest
 run:
 	go run ./cmd/audit2rbac/audit2rbac.go
 
-install-deps:
-	glide install -v
-	build/update-vendor-notices.sh
-
-update-deps:
-	glide update -v
-	build/update-vendor-notices.sh
-
-clean-deps:
-	rm -fr vendor
-
 build: check_go_version
 	go build -o bin/audit2rbac $(shell ./build/print-ldflags.sh) ./cmd/audit2rbac
 
